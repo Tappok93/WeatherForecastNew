@@ -40,12 +40,6 @@ class MainFragmentViewModel() : ViewModel() {
     fun saveCityInfo() {
         databaseRepositoryImpl.insertInfo(cityInfo)
     }
-
-    fun getCityInfo() {
-        Thread {
-            databaseRepositoryImpl.getInfo()
-        }.start()
-    }
 }
 
 

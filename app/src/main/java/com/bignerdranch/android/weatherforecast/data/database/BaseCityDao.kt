@@ -1,5 +1,6 @@
 package com.bignerdranch.android.weatherforecast.data.database
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -12,15 +13,15 @@ interface BaseCityDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertInfoCity(city: BaseCity)
 
-    @Update
-    fun updateInfoCity(city: BaseCity)
+//    @Update
+//    fun updateInfoCity(city: BaseCity)
 
-    @Query("SELECT * FROM citylist")
-    fun getInfoCity(): Flow<BaseCity>
+    @Query("SELECT * FROM CityList")
+    fun getInfoCity(): LiveData<List<BaseCity>>
 
-    @Query("SELECT id, name FROM CityList WHERE name = :cityName")
+    @Query("SELECT name FROM CityList WHERE name = :cityName")
     fun getCityName(cityName: String): String?
 
-    @Query("UPDATE CityList SET name = :name WHERE id = :id")
-    suspend fun updateItemName(id: Int, name: String)
+    @Query("UPDATE CityList SET `temp` = :temp, date = :date WHERE name = :name")
+    fun updateCity(name: String, temp: String, date: String)
 }

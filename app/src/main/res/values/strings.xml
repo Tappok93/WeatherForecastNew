@@ -9,4 +9,10 @@
     <string name="resultCityTV" />
     <string name="resultDataTV" />
     <string name="resultTempTV" />
+    <string name="nameCity">Введите город</string>
+    <string name="nameTemperature">Текущая темперетура :</string>
+    <string name="nameResult">Результат</string>
+    <string name="nameWhether">Узнать погоду</string>
+    <string name="nameSaveCity">Сохранить город</string>
+    <string name="nameMyCity">Мои города</string>
 </resources>

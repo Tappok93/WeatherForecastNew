@@ -18,7 +18,6 @@ class FirstFragment : Fragment() {
 
     private lateinit var binding: FragmentFirstBinding
     private lateinit var mainFragmentViewModel: MainFragmentViewModel
-   // private lateinit var navController: NavController
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,7 +25,6 @@ class FirstFragment : Fragment() {
     ): View {
         binding = FragmentFirstBinding.inflate(layoutInflater, container, false)
         mainFragmentViewModel = ViewModelProvider(this)[MainFragmentViewModel::class.java]
-        //navController = Navigation.findNavController(binding.root)
 
         binding.resultTempBTNFF.setOnClickListener {
             mainFragmentViewModel.getWeather(binding.cityEDT.text.toString())
@@ -43,7 +41,6 @@ class FirstFragment : Fragment() {
         }
 
         binding.button2.setOnClickListener {
-      //      navController.navigate(R.id.action_firstFragment_to_secondFragment)
             Navigation.findNavController(it).navigate(R.id.action_firstFragment_to_secondFragment)
         }
 

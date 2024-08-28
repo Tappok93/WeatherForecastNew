@@ -1,10 +1,7 @@
 package com.bignerdranch.android.weatherforecast.data.repository.repositoryDatabase
 
 import android.content.Context
-import android.content.Context.MODE_PRIVATE
-import android.database.Cursor
-import android.database.sqlite.SQLiteDatabase
-import android.widget.Toast
+import androidx.lifecycle.LiveData
 import com.bignerdranch.android.weatherforecast.data.database.BaseCity
 import com.bignerdranch.android.weatherforecast.data.database.BaseCityDao
 import com.bignerdranch.android.weatherforecast.data.database.DatabaseCity
@@ -13,7 +10,7 @@ import com.bignerdranch.android.weatherforecast.ui.screens.MyApplication
 import kotlinx.coroutines.flow.Flow
 
 
-class DatabaseRepositoryImpl(context: Context): DatabaseRepository {
+class DatabaseRepositoryImpl(context: Context) : DatabaseRepository {
 
     private val baseCityDao: BaseCityDao
     val context = MyApplication.getAppContext()
@@ -30,12 +27,12 @@ class DatabaseRepositoryImpl(context: Context): DatabaseRepository {
                 baseCityDao.insertInfoCity(city)
             } else {
                 //Toast.makeText(context, "Город ранее был сохранен в списке, данные по погоде обновлены.", Toast.LENGTH_SHORT).show()
-                baseCityDao.updateInfoCity(city)
+                baseCityDao.updateCity(city.name, city.temp, city.date)
             }
         }.start()
     }
 
-    override fun getInfo(): Flow<BaseCity> {
+    override fun getInfo(): LiveData<List<BaseCity>> {
         return baseCityDao.getInfoCity()
     }
 }
