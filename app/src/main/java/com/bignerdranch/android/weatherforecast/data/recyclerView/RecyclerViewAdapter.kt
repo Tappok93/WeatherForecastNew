@@ -1,4 +1,4 @@
-package com.bignerdranch.android.weatherforecast.ui.recyclerView
+package com.bignerdranch.android.weatherforecast.data.recyclerView
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

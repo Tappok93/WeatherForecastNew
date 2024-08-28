@@ -4,9 +4,7 @@ import android.annotation.SuppressLint
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.bignerdranch.android.weatherforecast.data.database.BaseCity
-import com.bignerdranch.android.weatherforecast.data.network.WeatherResponse
 import com.bignerdranch.android.weatherforecast.data.repository.repositoryDatabase.DatabaseRepositoryImpl
-import com.bignerdranch.android.weatherforecast.ui.recyclerView.RecyclerViewAdapter
 import com.bignerdranch.android.weatherforecast.ui.screens.MyApplication
 
 class ListCityFragmentViewModel: ViewModel(){

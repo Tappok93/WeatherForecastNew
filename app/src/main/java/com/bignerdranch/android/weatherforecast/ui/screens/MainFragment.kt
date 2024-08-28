@@ -26,21 +26,21 @@ class FirstFragment : Fragment() {
         binding = FragmentFirstBinding.inflate(layoutInflater, container, false)
         mainFragmentViewModel = ViewModelProvider(this)[MainFragmentViewModel::class.java]
 
-        binding.resultTempBTNFF.setOnClickListener {
+        binding.resultWheatherBTN.setOnClickListener {
             mainFragmentViewModel.getWeather(binding.cityEDT.text.toString())
             mainFragmentViewModel.resultResponse.observe(
-                viewLifecycleOwner,
-                Observer { weatherData ->
-                    binding.resultTempFF.text = weatherData.current.temp_c
-                })
+                viewLifecycleOwner
+            ) { weatherData ->
+                binding.resultTempFF.text = weatherData.current.temp_c
+            }
         }
 
-        binding.button.setOnClickListener {
+        binding.saveCityBTN.setOnClickListener {
             mainFragmentViewModel.createCityInfo()
             mainFragmentViewModel.saveCityInfo()
         }
 
-        binding.button2.setOnClickListener {
+        binding.myCityBTN.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_firstFragment_to_secondFragment)
         }
 

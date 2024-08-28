@@ -3,7 +3,6 @@ package com.bignerdranch.android.weatherforecast.data.database
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-
 @Entity(tableName = "CityList")
  class BaseCity(
     @PrimaryKey(autoGenerate = true)

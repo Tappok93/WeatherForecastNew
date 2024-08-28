@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/thirdFragment"
-        android:name="com.bignerdranch.android.weatherforecast.ui.screens.DetalCityFragment"
+        android:name="com.bignerdranch.android.weatherforecast.ui.screens.DetailCityFragment"
         android:label="fragment_third"
         tools:layout="@layout/fragment_third">
         <action

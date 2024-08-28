@@ -7,7 +7,7 @@ import com.bignerdranch.android.weatherforecast.data.database.BaseCityDao
 import com.bignerdranch.android.weatherforecast.data.database.DatabaseCity
 import com.bignerdranch.android.weatherforecast.domain.DatabaseRepository
 import com.bignerdranch.android.weatherforecast.ui.screens.MyApplication
-import kotlinx.coroutines.flow.Flow
+
 
 
 class DatabaseRepositoryImpl(context: Context) : DatabaseRepository {
@@ -26,7 +26,6 @@ class DatabaseRepositoryImpl(context: Context) : DatabaseRepository {
             if (baseCityDao.getCityName(city.name) == null) {
                 baseCityDao.insertInfoCity(city)
             } else {
-                //Toast.makeText(context, "Город ранее был сохранен в списке, данные по погоде обновлены.", Toast.LENGTH_SHORT).show()
                 baseCityDao.updateCity(city.name, city.temp, city.date)
             }
         }.start()

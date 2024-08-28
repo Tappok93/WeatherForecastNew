@@ -7,14 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import com.bignerdranch.android.weatherforecast.databinding.FragmentThirdBinding
 
-class DetalCityFragment : Fragment() {
+class DetailCityFragment : Fragment() {
 
-    lateinit var binding: FragmentThirdBinding
+    private lateinit var binding: FragmentThirdBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentThirdBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
