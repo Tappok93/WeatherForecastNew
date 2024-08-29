@@ -13,9 +13,6 @@ interface BaseCityDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertInfoCity(city: BaseCity)
 
-//    @Update
-//    fun updateInfoCity(city: BaseCity)
-
     @Query("SELECT * FROM CityList")
     fun getInfoCity(): LiveData<List<BaseCity>>
 

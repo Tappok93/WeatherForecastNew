@@ -1,7 +1,5 @@
 package com.bignerdranch.android.weatherforecast.data.repository.repositoryNetwork
 
-import android.app.Application
-import android.content.Context
 import androidx.lifecycle.LiveData
 import com.bignerdranch.android.weatherforecast.data.network.RetrofitWeather
 import com.bignerdranch.android.weatherforecast.data.network.WeatherApi
@@ -17,7 +15,6 @@ object NetworkRepository {
 
     private lateinit var apiWeather: WeatherApi
 
-
     private fun createRetrofit(): WeatherApi {
         val retrofit = Retrofit.Builder()
             .baseUrl("http://api.weatherapi.com/v1/")
@@ -28,7 +25,7 @@ object NetworkRepository {
         return apiWeather
     }
 
-    fun weatherResultResponse(city: String): LiveData<WeatherResponse> {
+    fun getWeatherResultAPI(city: String): LiveData<WeatherResponse> {
         val retrofitWeather = RetrofitWeather(apiWeather)
         return retrofitWeather.weatherResultResponse(city)
     }

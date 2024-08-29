@@ -18,7 +18,7 @@
         android:layout_marginBottom="8dp"
         android:background="#00ACC1"
         android:gravity="center"
-        android:text="@string/appName"
+        android:text="@string/nameMyCity"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"

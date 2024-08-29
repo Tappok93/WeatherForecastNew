@@ -6,48 +6,42 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
-import com.bignerdranch.android.weatherforecast.R
-import com.bignerdranch.android.weatherforecast.databinding.FragmentFirstBinding
+import com.bignerdranch.android.weatherforecast.databinding.FragmentThirdBinding
 import com.bignerdranch.android.weatherforecast.ui.viewModel.MainFragmentViewModel
 
-const val API_KEY = "0ef8741c77ee4b75b33102700242807"
+class DetailCityFragment : Fragment() {
 
-class FirstFragment : Fragment() {
-
-    private lateinit var binding: FragmentFirstBinding
+    private lateinit var binding: FragmentThirdBinding
     private lateinit var mainFragmentViewModel: MainFragmentViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentFirstBinding.inflate(layoutInflater, container, false)
         mainFragmentViewModel = ViewModelProvider(this)[MainFragmentViewModel::class.java]
+        binding = FragmentThirdBinding.inflate(layoutInflater, container, false)
 
-        binding.resultWheatherBTN.setOnClickListener {
-            mainFragmentViewModel.getWeather(binding.cityEDT.text.toString())
+        binding.cityNameTVinDetail.text = arguments?.getString("name")
+        binding.resultDateTVinDetail.text = arguments?.getString("data")
+        binding.resultTempTVinDetail.text = arguments?.getString("temp")
+
+        binding.resultWeatherBTNinDetail.setOnClickListener {
+
+            mainFragmentViewModel.getWeather(binding.cityNameTVinDetail.text.toString())
             mainFragmentViewModel.resultResponse.observe(
                 viewLifecycleOwner
             ) { weatherData ->
-                binding.resultTempFF.text = weatherData.current.temp_c
+                binding.resultTempTVinDetail.text = weatherData.current.temp_c
+                binding.resultDateTVinDetail.text = weatherData.current.last_updated
             }
+
         }
 
-        binding.saveCityBTN.setOnClickListener {
+        binding.saveResultBTNinDetail.setOnClickListener {
             mainFragmentViewModel.createCityInfoInObject()
             mainFragmentViewModel.saveCityInfoInUi()
-        }
-
-        binding.myCityBTN.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_firstFragment_to_secondFragment)
         }
 
         return binding.root
     }
 }
-
-
-
-
-

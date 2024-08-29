@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">WeatherForecast</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="appName">Прогноз погоды</string>
     <string name="tempText">Температура:</string>
@@ -15,4 +14,8 @@
     <string name="nameWhether">Узнать погоду</string>
     <string name="nameSaveCity">Сохранить город</string>
     <string name="nameMyCity">Мои города</string>
+    <string name="saveBTNinDetail">Сохранить новые данные</string>
+    <string name="searchWeatherBTN">Узнать погоду</string>
+    <string name="tempTVinDetail">Текущая температура</string>
+    <string name="updateDateTVinDetail">Поседнее обновление</string>
 </resources>

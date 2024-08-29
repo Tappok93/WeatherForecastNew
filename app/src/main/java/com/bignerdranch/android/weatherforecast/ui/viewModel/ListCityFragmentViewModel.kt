@@ -5,23 +5,22 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.bignerdranch.android.weatherforecast.data.database.BaseCity
 import com.bignerdranch.android.weatherforecast.data.repository.repositoryDatabase.DatabaseRepositoryImpl
+import com.bignerdranch.android.weatherforecast.domain.useCase.useCaseDatabase.GetInfoDatabaseUseCase
 import com.bignerdranch.android.weatherforecast.ui.screens.MyApplication
 
-class ListCityFragmentViewModel: ViewModel(){
+class ListCityFragmentViewModel : ViewModel() {
 
-    private var databaseRepositoryImpl: DatabaseRepositoryImpl
-    lateinit var resultResponse: LiveData<List<BaseCity>>
+    lateinit var liveDataListBaseCity: LiveData<List<BaseCity>>
 
     @SuppressLint("StaticFieldLeak")
     val context = MyApplication.getAppContext()
+    private val getInfoDatabaseUseCase = GetInfoDatabaseUseCase(context)
 
-    init {
-        databaseRepositoryImpl = DatabaseRepositoryImpl(context)
-    }
-
-
-    fun getCityInfo(): LiveData<List<BaseCity>>{
-        resultResponse = databaseRepositoryImpl.getInfo()
-        return resultResponse
+    /**
+     * Метод получения LiveData с объектами BaseCity
+     */
+    fun getCityInfo(): LiveData<List<BaseCity>> {
+        liveDataListBaseCity = getInfoDatabaseUseCase.getInfoFromDatabaseUseCase()
+        return liveDataListBaseCity
     }
 }
