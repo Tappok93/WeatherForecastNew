@@ -14,6 +14,9 @@ class InsertInfoUseCase(context: Context) : DatabaseRepositoryImpl(context) {
         baseCityDao = database!!.getBaseCityDao()
     }
 
+    /**
+     * Метод сохранения или обновления данных в Database
+     */
     fun insertOrUpdateInfoDatabaseUseCase(city: BaseCity) {
         Thread {
             if (baseCityDao.getCityName(city.name) == null) {

@@ -19,6 +19,9 @@ open class DatabaseRepositoryImpl(context: Context) : DatabaseRepository {
         baseCityDao = database!!.getBaseCityDao()
     }
 
+    /**
+     * Реализация интерфеса по вставке или обновлении данных в Database
+     */
     override fun insertOrUpdateInfoDatabase(city: BaseCity) {
 
         Thread {
@@ -30,6 +33,9 @@ open class DatabaseRepositoryImpl(context: Context) : DatabaseRepository {
         }.start()
     }
 
+    /**
+     * Реализация интерфеса по получению списка объектов из Database
+     */
     override fun getInfoFromDatabase(): LiveData<List<BaseCity>> {
         return baseCityDao.getInfoCity()
     }

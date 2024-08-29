@@ -15,6 +15,10 @@ object NetworkRepository {
 
     private lateinit var apiWeather: WeatherApi
 
+
+    /**
+     * Метод создания Retrofit для запроса
+     */
     private fun createRetrofit(): WeatherApi {
         val retrofit = Retrofit.Builder()
             .baseUrl("http://api.weatherapi.com/v1/")
@@ -25,6 +29,9 @@ object NetworkRepository {
         return apiWeather
     }
 
+    /**
+     * Метод получения погоды по переданному городу
+     */
     fun getWeatherResultAPI(city: String): LiveData<WeatherResponse> {
         val retrofitWeather = RetrofitWeather(apiWeather)
         return retrofitWeather.weatherResultResponse(city)

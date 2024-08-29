@@ -18,6 +18,9 @@ class RecyclerViewAdapter(private var myListArray: List<BaseCity>) :
         private val bindingAdapter = ScreenBoxElementBinding.bind(itemView)
         val bundle = Bundle()
 
+        /**
+         * Заполнение шаблона данными, передача данных на следующий фрагмент
+         */
         fun setData(baseCity: BaseCity) {
             bindingAdapter.resultDataTV.text = baseCity.date
             bindingAdapter.resultCityTV.text = baseCity.name
@@ -35,20 +38,32 @@ class RecyclerViewAdapter(private var myListArray: List<BaseCity>) :
         }
     }
 
+    /**
+     * Создание холдера по созданному XML элементу
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val inflater = LayoutInflater.from(parent.context)
             .inflate(R.layout.screen_box_element, parent, false)
         return ItemViewHolder(inflater)
     }
 
+    /**
+     * Счётчик количеста отображаемых элементов в списке
+     */
     override fun getItemCount(): Int {
         return myListArray.size
     }
 
+    /**
+     * Заполнение холдера данными по созданному шаблону XML
+     */
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         holder.setData(myListArray[position])
     }
 
+    /**
+     * Обновление созданного списка
+     */
     @SuppressLint("NotifyDataSetChanged")
     fun updateList(listItem: List<BaseCity>) {
         myListArray = listItem

@@ -21,10 +21,16 @@ class MainFragmentViewModel() : ViewModel() {
     private val insertInfoUseCase = InsertInfoUseCase(context)
 
 
+    /**
+     * Метод получения погоды по переданному городу
+     */
     fun getWeather(city: String) {
         resultResponse = NetworkRepository.getWeatherResultAPI(city)
     }
 
+    /**
+     * Метод создания объекта BaseCity с данными
+     */
     fun createCityInfoInObject(): BaseCity {
         cityInfo = BaseCity(
             name = resultResponse.value?.location?.name ?: "Name not found",
@@ -34,6 +40,9 @@ class MainFragmentViewModel() : ViewModel() {
         return cityInfo
     }
 
+    /**
+     * Метод сохранения или обновления данных по городу в Database
+     */
     fun saveCityInfoInUi() {
         insertInfoUseCase.insertOrUpdateInfoDatabaseUseCase(cityInfo)
     }

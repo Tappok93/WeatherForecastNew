@@ -6,12 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bignerdranch.android.weatherforecast.R
 import com.bignerdranch.android.weatherforecast.databinding.FragmentSecondBinding
-import com.bignerdranch.android.weatherforecast.databinding.ScreenBoxElementBinding
 import com.bignerdranch.android.weatherforecast.ui.recyclerView.RecyclerViewAdapter
 import com.bignerdranch.android.weatherforecast.ui.viewModel.ListCityFragmentViewModel
 
@@ -35,7 +32,7 @@ class ListCityFragment : Fragment() {
         adapter = RecyclerViewAdapter(emptyList())
         recycler.adapter = adapter
 
-        listCityFragmentViewModel.getCityInfo()
+        listCityFragmentViewModel.getInfoCityFromDatabase()
         listCityFragmentViewModel.liveDataListBaseCity.observe(
             viewLifecycleOwner
         ) { dataList ->

@@ -15,6 +15,9 @@ class GetInfoDatabaseUseCase(context: Context) : DatabaseRepositoryImpl(context)
         baseCityDao = database!!.getBaseCityDao()
     }
 
+    /**
+     * Получение списка объектов из Database
+     */
     fun getInfoFromDatabaseUseCase(): LiveData<List<BaseCity>> {
         return baseCityDao.getInfoCity()
     }
