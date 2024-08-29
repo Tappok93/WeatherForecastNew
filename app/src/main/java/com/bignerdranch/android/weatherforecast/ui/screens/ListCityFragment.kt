@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.weatherforecast.databinding.FragmentSecondBinding
+import com.bignerdranch.android.weatherforecast.databinding.ScreenBoxElementBinding
 import com.bignerdranch.android.weatherforecast.ui.recyclerView.RecyclerViewAdapter
 import com.bignerdranch.android.weatherforecast.ui.viewModel.ListCityFragmentViewModel
 

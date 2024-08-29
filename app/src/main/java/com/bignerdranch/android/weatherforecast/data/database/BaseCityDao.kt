@@ -34,4 +34,10 @@ interface BaseCityDao {
      */
     @Query("UPDATE CityList SET `temp` = :temp, date = :date WHERE name = :name")
     fun updateCity(name: String, temp: String, date: String)
+
+    /**
+     * Удаление записи в Database
+     */
+    @Query("DELETE FROM CityList WHERE name = :name")
+    fun deleteInfo(name: String)
 }

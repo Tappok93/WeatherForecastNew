@@ -38,4 +38,11 @@ open class DatabaseRepositoryImpl(context: Context) : DatabaseRepository {
     override fun getInfoFromDatabase(): LiveData<List<BaseCity>> {
         return baseCityDao.getInfoCity()
     }
+
+    /**
+     * Реализация интерфеса по удалению объекта из Database
+     */
+    override fun  deleteInfoFromDatabase(name: String) {
+            baseCityDao.deleteInfo(name)
+    }
 }

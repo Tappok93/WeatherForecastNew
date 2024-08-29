@@ -18,4 +18,5 @@
     <string name="searchWeatherBTN">Узнать погоду</string>
     <string name="tempTVinDetail">Текущая температура</string>
     <string name="updateDateTVinDetail">Поседнее обновление</string>
+    <string name="Delete">Del</string>
 </resources>

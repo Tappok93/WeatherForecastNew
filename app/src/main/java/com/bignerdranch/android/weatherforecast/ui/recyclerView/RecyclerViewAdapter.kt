@@ -10,13 +10,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.weatherforecast.R
 import com.bignerdranch.android.weatherforecast.data.database.BaseCity
 import com.bignerdranch.android.weatherforecast.databinding.ScreenBoxElementBinding
+import com.bignerdranch.android.weatherforecast.ui.viewModel.ListCityFragmentViewModel
 
 class RecyclerViewAdapter(private var myListArray: List<BaseCity>) :
     RecyclerView.Adapter<RecyclerViewAdapter.ItemViewHolder>() {
 
-    class ItemViewHolder(private val itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private var listCityFragmentViewModel = ListCityFragmentViewModel()
         private val bindingAdapter = ScreenBoxElementBinding.bind(itemView)
-        val bundle = Bundle()
+        private val bundle = Bundle()
 
         /**
          * Заполнение шаблона данными, передача данных на следующий фрагмент
@@ -27,13 +29,16 @@ class RecyclerViewAdapter(private var myListArray: List<BaseCity>) :
             bindingAdapter.resultTempTV.text = baseCity.temp
 
             bindingAdapter.constraintElement.setOnClickListener {
-
                 bundle.putString("name", bindingAdapter.resultCityTV.text as String)
                 bundle.putString("temp", bindingAdapter.resultTempTV.text as String)
                 bundle.putString("data", bindingAdapter.resultDataTV.text as String)
 
                 Navigation.findNavController(it)
                     .navigate(R.id.action_secondFragment_to_thirdFragment, bundle)
+                }
+
+                bindingAdapter.deleteBTN.setOnClickListener {
+                    listCityFragmentViewModel.deleteCityForList(baseCity.name)
             }
         }
     }
