@@ -10,7 +10,6 @@ import com.bignerdranch.android.weatherforecast.ui.screens.MyApplication
 
 
 open class DatabaseRepositoryImpl(context: Context) : DatabaseRepository {
-
     private val baseCityDao: BaseCityDao
     val context = MyApplication.getAppContext()
 
