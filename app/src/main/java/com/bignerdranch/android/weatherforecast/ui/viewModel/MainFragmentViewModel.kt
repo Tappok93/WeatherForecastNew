@@ -2,6 +2,10 @@ package com.bignerdranch.android.weatherforecast.ui.viewModel
 
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Context
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.bignerdranch.android.weatherforecast.data.database.BaseCity
@@ -45,6 +49,14 @@ class MainFragmentViewModel() : ViewModel() {
      */
     fun saveCityInfoInUi() {
         insertInfoUseCase.insertOrUpdateInfoDatabaseUseCase(cityInfo)
+    }
+
+    /**
+     * Метод скрытия системной клавиатуры
+     */
+    fun hideKeyboardFrom(context: Context, view: View) {
+        val imm = context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }
 

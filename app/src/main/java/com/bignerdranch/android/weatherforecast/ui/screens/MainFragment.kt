@@ -1,11 +1,12 @@
 package com.bignerdranch.android.weatherforecast.ui.screens
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.bignerdranch.android.weatherforecast.R
@@ -28,18 +29,24 @@ class FirstFragment : Fragment() {
         mainFragmentViewModel = ViewModelProvider(this)[MainFragmentViewModel::class.java]
 
         binding.resultWheatherBTN.setOnClickListener {
+            mainFragmentViewModel.hideKeyboardFrom(requireContext(), binding.cityEDT)
             mainFragmentViewModel.getWeather(binding.cityEDT.text.toString())
+
             mainFragmentViewModel.resultResponse.observe(
                 viewLifecycleOwner
             ) { weatherData ->
-                binding.weatherTV.text = weatherData.current.condition.text
-                binding.resultTempFF.text = weatherData.current.temp_c
+                if (weatherData == null) {
+                    Toast.makeText(context, "Не указан город.", Toast.LENGTH_SHORT).show()
+                } else {
+                    binding.weatherTV.text = weatherData.current.condition.text
+                    binding.resultTempFF.text = weatherData.current.temp_c
 
-                Glide.with(this)
-                    .load("https:" + weatherData.current.condition.icon)
-                    .into(binding.weatherIV)
+                    Glide.with(this)
+                        .load("https:" + weatherData.current.condition.icon)
+                        .into(binding.weatherIV)
 
-                binding.weatherIV.visibility = VISIBLE
+                    binding.weatherIV.visibility = VISIBLE
+                }
             }
         }
 

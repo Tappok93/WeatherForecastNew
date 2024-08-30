@@ -14,7 +14,7 @@
         android:layout_marginStart="60dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="60dp"
-        android:background="#00ACC1"
+        android:background="@drawable/topic_tv_from_frag_first"
         android:gravity="center"
         android:text="@string/appName"
         android:textColor="@color/black"

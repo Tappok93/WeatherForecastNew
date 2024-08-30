@@ -17,7 +17,7 @@
     <string name="saveBTNinDetail">Сохранить новые данные</string>
     <string name="searchWeatherBTN">Узнать погоду</string>
     <string name="tempTVinDetail">Текущая температура</string>
-    <string name="updateDateTVinDetail">Поседнее обновление</string>
+    <string name="updateDateTVinDetail">Поседнее обновление: </string>
     <string name="Delete">Del</string>
     <string name="weather">TextView</string>
 </resources>
