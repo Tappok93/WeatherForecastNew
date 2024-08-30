@@ -35,7 +35,7 @@ class MainFragmentViewModel() : ViewModel() {
         cityInfo = BaseCity(
             name = resultResponse.value?.location?.name ?: "Name not found",
             date = resultResponse.value!!.current.last_updated,
-            temp = resultResponse.value!!.current.temp_c
+            temp = resultResponse.value!!.current.temp_c,
         )
         return cityInfo
     }

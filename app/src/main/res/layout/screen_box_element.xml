@@ -1,19 +1,18 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:backgroundTint="#07786D"
     app:cardCornerRadius="20dp"
-    app:cardElevation="6dp"
-    android:backgroundTint="#07786D">
+    app:cardElevation="6dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintElement"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="10dp"
-        android:background="#85C7F3"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp">
+        android:background="#85C7F3">
 
         <TextView
             android:id="@+id/cityTV"
@@ -27,8 +26,10 @@
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/dataTV"
+            app:layout_constraintEnd_toStartOf="@+id/resultCityTV"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/dataTV"
@@ -58,7 +59,7 @@
 
         <TextView
             android:id="@+id/resultCityTV"
-            android:layout_width="240dp"
+            android:layout_width="270dp"
             android:layout_height="40dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
@@ -71,7 +72,7 @@
             app:layout_constraintBottom_toTopOf="@+id/resultDataTV"
             app:layout_constraintStart_toEndOf="@+id/cityTV"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.23" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/resultDataTV"
@@ -88,9 +89,9 @@
 
         <TextView
             android:id="@+id/resultTempTV"
-            android:layout_width="54dp"
+            android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginStart="16dp"
             android:layout_marginBottom="8dp"
             android:background="#23749F"
             android:gravity="center"
@@ -98,24 +99,19 @@
             android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/tempTV" />
 
-        <Button
-            android:id="@+id/deleteBTN"
-            android:layout_width="74dp"
-            android:layout_height="39dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="16dp"
-            android:backgroundTint="#AF0202"
-            android:text="@string/Delete"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toTopOf="@+id/resultTempTV"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+        <ImageView
+            android:id="@+id/deleteEmgView"
+            android:layout_width="64dp"
+            android:layout_height="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/resultCityTV"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.125"
+            app:srcCompat="@drawable/icon_remove"
+            tools:ignore="DuplicateIds" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

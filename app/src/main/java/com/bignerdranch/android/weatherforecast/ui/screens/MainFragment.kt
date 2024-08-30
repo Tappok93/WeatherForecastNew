@@ -4,12 +4,14 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.bignerdranch.android.weatherforecast.R
 import com.bignerdranch.android.weatherforecast.databinding.FragmentFirstBinding
 import com.bignerdranch.android.weatherforecast.ui.viewModel.MainFragmentViewModel
+import com.bumptech.glide.Glide
 
 const val API_KEY = "0ef8741c77ee4b75b33102700242807"
 
@@ -30,7 +32,14 @@ class FirstFragment : Fragment() {
             mainFragmentViewModel.resultResponse.observe(
                 viewLifecycleOwner
             ) { weatherData ->
+                binding.weatherTV.text = weatherData.current.condition.text
                 binding.resultTempFF.text = weatherData.current.temp_c
+
+                Glide.with(this)
+                    .load("https:" + weatherData.current.condition.icon)
+                    .into(binding.weatherIV)
+
+                binding.weatherIV.visibility = VISIBLE
             }
         }
 

@@ -37,7 +37,7 @@ class RecyclerViewAdapter(private var myListArray: List<BaseCity>) :
                     .navigate(R.id.action_secondFragment_to_thirdFragment, bundle)
                 }
 
-                bindingAdapter.deleteBTN.setOnClickListener {
+                bindingAdapter.deleteEmgView.setOnClickListener {
                     listCityFragmentViewModel.deleteCityForList(baseCity.name)
             }
         }

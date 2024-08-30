@@ -19,4 +19,5 @@
     <string name="tempTVinDetail">Текущая температура</string>
     <string name="updateDateTVinDetail">Поседнее обновление</string>
     <string name="Delete">Del</string>
+    <string name="weather">TextView</string>
 </resources>
