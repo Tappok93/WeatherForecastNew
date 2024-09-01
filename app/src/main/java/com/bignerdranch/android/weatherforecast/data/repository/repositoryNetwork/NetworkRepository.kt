@@ -15,7 +15,6 @@ object NetworkRepository {
 
     private lateinit var apiWeather: WeatherApi
 
-
     /**
      * Метод создания Retrofit для запроса
      */

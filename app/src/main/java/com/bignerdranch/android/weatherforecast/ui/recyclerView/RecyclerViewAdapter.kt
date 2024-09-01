@@ -15,30 +15,39 @@ import com.bignerdranch.android.weatherforecast.ui.viewModel.ListCityFragmentVie
 class RecyclerViewAdapter(private var myListArray: List<BaseCity>) :
     RecyclerView.Adapter<RecyclerViewAdapter.ItemViewHolder>() {
 
+    //Обработать нажатие в Adapter
+    private var infoListener: InfoItemClickListener? = null
+
+    fun setInfoListener(listener: InfoItemClickListener) {
+        infoListener = listener
+    }
+
+    interface InfoItemClickListener {
+        fun onItemClickListener(baseCity: BaseCity)
+        fun deleteElementClickListener(baseCity: BaseCity)
+    }
+
     class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private var listCityFragmentViewModel = ListCityFragmentViewModel()
         private val bindingAdapter = ScreenBoxElementBinding.bind(itemView)
-        private val bundle = Bundle()
 
         /**
-         * Заполнение шаблона данными, передача данных на следующий фрагмент
+         * Заполнение шаблона данными, передача данных на следующий фрагмент, удаление элемента списка
          */
-        fun setData(baseCity: BaseCity) {
+        fun setData(baseCity: BaseCity, listener: InfoItemClickListener?) {
             bindingAdapter.resultDataTV.text = baseCity.date
             bindingAdapter.resultCityTV.text = baseCity.name
             bindingAdapter.resultTempTV.text = baseCity.temp
 
-            bindingAdapter.constraintElement.setOnClickListener {
-                bundle.putString("name", bindingAdapter.resultCityTV.text as String)
-                bundle.putString("temp", bindingAdapter.resultTempTV.text as String)
-                bundle.putString("data", bindingAdapter.resultDataTV.text as String)
+//            bindingAdapter.constraintElement.setOnClickListener {
+//                listener?.onItemClickListener(baseCity)
+//            }
 
-                Navigation.findNavController(it)
-                    .navigate(R.id.action_secondFragment_to_thirdFragment, bundle)
-                }
+            bindingAdapter.infoBTN.setOnClickListener {
+                listener?.onItemClickListener(baseCity)
+            }
 
-                bindingAdapter.deleteEmgView.setOnClickListener {
-                    listCityFragmentViewModel.deleteCityForList(baseCity.name)
+            bindingAdapter.deleteEmgView.setOnClickListener {
+                listener?.deleteElementClickListener(baseCity)
             }
         }
     }
@@ -63,7 +72,8 @@ class RecyclerViewAdapter(private var myListArray: List<BaseCity>) :
      * Заполнение холдера данными по созданному шаблону XML
      */
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        holder.setData(myListArray[position])
+        val baseCityItem = myListArray[position]
+        holder.setData(baseCityItem, infoListener)
     }
 
     /**

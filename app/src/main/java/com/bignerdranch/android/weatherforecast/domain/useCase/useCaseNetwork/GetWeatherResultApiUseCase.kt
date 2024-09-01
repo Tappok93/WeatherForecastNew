@@ -7,10 +7,11 @@ import com.bignerdranch.android.weatherforecast.data.network.WeatherResponse
 import com.bignerdranch.android.weatherforecast.data.repository.repositoryNetwork.NetworkRepository
 
 //TODO Уточнить можно ли реализовать UseCase для синглтона ?
-class GetWeatherResultApiUseCase {
-    private lateinit var apiWeather: WeatherApi
-//    fun getWeatherResultApiUseCase(city: String): LiveData<WeatherResponse> {
-//        val retrofitWeather = RetrofitWeather(NetworkRepository.apiWeather)
-//        return retrofitWeather.weatherResultResponse(city)
-//    }
+class GetWeatherResultApiUseCase() {
+
+
+    fun getWeatherResultAPI(city: String): LiveData<WeatherResponse> {
+        return NetworkRepository.getWeatherResultAPI(city)
+    }
+
 }

@@ -6,25 +6,13 @@ import com.bignerdranch.android.weatherforecast.data.database.BaseCityDao
 import com.bignerdranch.android.weatherforecast.data.database.DatabaseCity
 import com.bignerdranch.android.weatherforecast.data.repository.repositoryDatabase.DatabaseRepositoryImpl
 
-class InsertInfoUseCase(context: Context) : DatabaseRepositoryImpl(context) {
-    private val baseCityDao: BaseCityDao
-
-    init {
-        val database = DatabaseCity.getInstance(context)
-        baseCityDao = database!!.getBaseCityDao()
-    }
+class InsertInfoUseCase(private val repositoryImpl: DatabaseRepositoryImpl) {
 
     /**
      * Метод сохранения или обновления данных в Database
      */
     fun insertOrUpdateInfoDatabaseUseCase(city: BaseCity) {
-        Thread {
-            if (baseCityDao.getCityName(city.name) == null) {
-                baseCityDao.insertInfoCity(city)
-            } else {
-                baseCityDao.updateCity(city.name, city.temp, city.date)
-            }
-        }.start()
+        repositoryImpl.insertOrUpdateInfoDatabase(city)
     }
 }
 

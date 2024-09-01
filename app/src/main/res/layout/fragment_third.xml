@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#BEE9FD"
-    tools:context=".ui.screens.DetailCityFragment">>
+    tools:context=".ui.screens.DetailCityFragment"
+    tools:ignore="ExtraText">>
 
     <TextView
         android:id="@+id/cityNameTVinDetail"
