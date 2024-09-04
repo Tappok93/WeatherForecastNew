@@ -1,6 +1,5 @@
 package com.bignerdranch.android.weatherforecast.data.database
 
-import android.view.inputmethod.ExtractedTextRequest
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -11,6 +10,4 @@ class BaseCity(
     val name: String,
     val date: String,
     val temp: String,
-) {
-
-}
+)

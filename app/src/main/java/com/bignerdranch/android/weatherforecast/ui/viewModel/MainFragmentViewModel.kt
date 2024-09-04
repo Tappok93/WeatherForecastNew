@@ -11,7 +11,6 @@ import androidx.lifecycle.ViewModel
 import com.bignerdranch.android.weatherforecast.data.database.BaseCity
 import com.bignerdranch.android.weatherforecast.data.network.WeatherResponse
 import com.bignerdranch.android.weatherforecast.data.repository.repositoryDatabase.DatabaseRepositoryImpl
-import com.bignerdranch.android.weatherforecast.data.repository.repositoryNetwork.NetworkRepository
 import com.bignerdranch.android.weatherforecast.domain.useCase.useCaseDatabase.InsertInfoUseCase
 import com.bignerdranch.android.weatherforecast.domain.useCase.useCaseNetwork.GetWeatherResultApiUseCase
 import com.bignerdranch.android.weatherforecast.ui.screens.MyApplication
@@ -20,7 +19,7 @@ import com.bignerdranch.android.weatherforecast.ui.screens.MyApplication
 class MainFragmentViewModel() : ViewModel() {
 
     lateinit var resultResponse: LiveData<WeatherResponse>
-    private lateinit var cityInfo: BaseCity
+    lateinit var cityInfo: BaseCity
 
     @SuppressLint("StaticFieldLeak")
     val context = MyApplication.getAppContext()

@@ -30,8 +30,6 @@ class ListCityFragmentViewModel : ViewModel() {
      * Метод удаления объекта из BaseCity
      */
     fun deleteCityForList(name: String) {
-        Thread {
-            deleteInfoFromDatabaseUseCase.deleteInfoFromDatabaseUseCase(name)
-        }.start()
+        deleteInfoFromDatabaseUseCase.deleteInfoFromDatabaseUseCase(name)
     }
 }

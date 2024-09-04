@@ -1,19 +1,17 @@
 package com.bignerdranch.android.weatherforecast.ui.screens
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.weatherforecast.R
 import com.bignerdranch.android.weatherforecast.data.database.BaseCity
 import com.bignerdranch.android.weatherforecast.databinding.FragmentSecondBinding
-import com.bignerdranch.android.weatherforecast.databinding.ScreenBoxElementBinding
 import com.bignerdranch.android.weatherforecast.ui.recyclerView.RecyclerViewAdapter
 import com.bignerdranch.android.weatherforecast.ui.viewModel.ListCityFragmentViewModel
 

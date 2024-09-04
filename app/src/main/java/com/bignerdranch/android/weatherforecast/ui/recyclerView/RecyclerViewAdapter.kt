@@ -1,27 +1,27 @@
 package com.bignerdranch.android.weatherforecast.ui.recyclerView
 
 import android.annotation.SuppressLint
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.weatherforecast.R
 import com.bignerdranch.android.weatherforecast.data.database.BaseCity
 import com.bignerdranch.android.weatherforecast.databinding.ScreenBoxElementBinding
-import com.bignerdranch.android.weatherforecast.ui.viewModel.ListCityFragmentViewModel
 
 class RecyclerViewAdapter(private var myListArray: List<BaseCity>) :
     RecyclerView.Adapter<RecyclerViewAdapter.ItemViewHolder>() {
 
-    //Обработать нажатие в Adapter
+
     private var infoListener: InfoItemClickListener? = null
 
     fun setInfoListener(listener: InfoItemClickListener) {
         infoListener = listener
     }
 
+    /**
+     * Интерфейс для обработки нажатий на элементы списка
+     */
     interface InfoItemClickListener {
         fun onItemClickListener(baseCity: BaseCity)
         fun deleteElementClickListener(baseCity: BaseCity)
@@ -38,11 +38,7 @@ class RecyclerViewAdapter(private var myListArray: List<BaseCity>) :
             bindingAdapter.resultCityTV.text = baseCity.name
             bindingAdapter.resultTempTV.text = baseCity.temp
 
-//            bindingAdapter.constraintElement.setOnClickListener {
-//                listener?.onItemClickListener(baseCity)
-//            }
-
-            bindingAdapter.infoBTN.setOnClickListener {
+            bindingAdapter.constraintElement.setOnClickListener {
                 listener?.onItemClickListener(baseCity)
             }
 

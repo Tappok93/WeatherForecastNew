@@ -1,7 +1,5 @@
 package com.bignerdranch.android.weatherforecast.domain.useCase.useCaseDatabase
 
-import android.content.Context
-import com.bignerdranch.android.weatherforecast.data.database.DatabaseCity
 import com.bignerdranch.android.weatherforecast.data.repository.repositoryDatabase.DatabaseRepositoryImpl
 
 class DeleteInfoFromDatabaseUseCase(private val repositoryImpl: DatabaseRepositoryImpl) {

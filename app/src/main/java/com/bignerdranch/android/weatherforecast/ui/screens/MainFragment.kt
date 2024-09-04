@@ -53,6 +53,7 @@ class FirstFragment : Fragment() {
         binding.saveCityBTN.setOnClickListener {
             mainFragmentViewModel.createCityInfoInObject()
             mainFragmentViewModel.saveCityInfoInUi()
+            Toast.makeText(context, "Город сохранён в список", Toast.LENGTH_SHORT).show()
         }
 
         binding.myCityBTN.setOnClickListener {

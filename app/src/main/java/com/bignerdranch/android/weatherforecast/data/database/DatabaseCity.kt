@@ -1,7 +1,6 @@
 package com.bignerdranch.android.weatherforecast.data.database
 
 import android.content.Context
-import android.provider.CalendarContract.Instances
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase

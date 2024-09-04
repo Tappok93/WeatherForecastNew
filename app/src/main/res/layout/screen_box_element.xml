@@ -1,7 +1,7 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:backgroundTint="#07786D"
@@ -10,16 +10,15 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintElement"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"
         android:background="#85C7F3">
 
         <TextView
             android:id="@+id/cityTV"
-            android:layout_width="50dp"
+            android:layout_width="42dp"
             android:layout_height="40dp"
-            android:layout_marginStart="2dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:gravity="center_vertical"
@@ -49,19 +48,20 @@
             android:id="@+id/tempTV"
             android:layout_width="110dp"
             android:layout_height="40dp"
+            android:layout_marginStart="8dp"
             android:layout_marginBottom="8dp"
             android:gravity="center_vertical"
             android:text="@string/tempText"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/resultTempTV"
             app:layout_constraintStart_toEndOf="@+id/resultDataTV" />
 
         <TextView
             android:id="@+id/resultCityTV"
-            android:layout_width="178dp"
+            android:layout_width="0dp"
             android:layout_height="40dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:background="#23749F"
@@ -71,6 +71,7 @@
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/resultDataTV"
+            app:layout_constraintEnd_toStartOf="@+id/deleteEmgView"
             app:layout_constraintStart_toEndOf="@+id/cityTV"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
@@ -79,6 +80,7 @@
             android:id="@+id/resultDataTV"
             android:layout_width="140dp"
             android:layout_height="40dp"
+            android:layout_marginStart="8dp"
             android:layout_marginBottom="8dp"
             android:background="#23749F"
             android:gravity="center"
@@ -93,8 +95,7 @@
             android:id="@+id/resultTempTV"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="60dp"
             android:layout_marginBottom="8dp"
             android:background="#23749F"
             android:gravity="center"
@@ -103,31 +104,19 @@
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.727"
             app:layout_constraintStart_toEndOf="@+id/tempTV" />
 
         <ImageView
             android:id="@+id/deleteEmgView"
-            android:layout_width="64dp"
+            android:layout_width="54dp"
             android:layout_height="40dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/infoBTN"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.125"
             app:srcCompat="@drawable/icon_remove"
             tools:ignore="DuplicateIds" />
-
-        <Button
-            android:id="@+id/infoBTN"
-            android:layout_width="70dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="8dp"
-            android:backgroundTint="#C0CA33"
-            android:text="@string/infoButtonText"
-            app:layout_constraintBottom_toTopOf="@+id/tempTV"
-            app:layout_constraintEnd_toStartOf="@+id/deleteEmgView"
-            app:layout_constraintStart_toEndOf="@+id/resultCityTV"
-            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

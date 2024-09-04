@@ -5,8 +5,6 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import androidx.room.Update
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface BaseCityDao {
@@ -18,13 +16,13 @@ interface BaseCityDao {
     fun insertInfoCity(city: BaseCity)
 
     /**
-     * Получение списка объектов из Database
+     * Получение всего списка объектов из Database
      */
     @Query("SELECT * FROM CityList")
     fun getInfoCity(): LiveData<List<BaseCity>>
 
     /**
-     * Получение объекта по названию города из Database
+     * Получение записи по названию города из Database
      */
     @Query("SELECT name FROM CityList WHERE name = :cityName")
     fun getCityName(cityName: String): String?

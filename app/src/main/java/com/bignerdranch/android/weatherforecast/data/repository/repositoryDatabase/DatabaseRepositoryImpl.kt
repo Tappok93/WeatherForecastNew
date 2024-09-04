@@ -43,6 +43,8 @@ open class DatabaseRepositoryImpl(context: Context) : DatabaseRepository {
      * Реализация интерфеса по удалению объекта из Database
      */
     override fun deleteInfoFromDatabase(name: String) {
+        Thread {
             baseCityDao.deleteInfo(name)
+        }.start()
     }
 }
