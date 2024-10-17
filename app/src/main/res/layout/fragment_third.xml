@@ -12,15 +12,16 @@
     <TextView
         android:id="@+id/cityNameTVinDetail"
         android:layout_width="match_parent"
-        android:layout_height="177dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/topic_tv_from_frag_third"
         android:gravity="center"
+        android:textColor="@color/white"
         android:textSize="40sp"
         android:textStyle="bold"
-        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/infoDateTVinDetail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,22 +29,24 @@
 
     <TextView
         android:id="@+id/infoDateTVinDetail"
-        android:layout_width="165dp"
-        android:layout_height="40dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="10dp"
         android:background="#23749F"
-        android:text="@string/updateDateTVinDetail"
         android:gravity="center"
+        android:text="@string/updateDateTVinDetail"
         android:textColor="@color/white"
         android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/infoTempTVinDetail"
+        app:layout_constraintEnd_toStartOf="@+id/resultDateTVinDetail"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cityNameTVinDetail" />
 
     <TextView
         android:id="@+id/resultDateTVinDetail"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="8dp"
         android:background="#23749F"
@@ -51,50 +54,70 @@
         android:textColor="#5221B5"
         android:textSize="16sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/infoTempTVinDetail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/infoDateTVinDetail"
-        app:layout_constraintTop_toBottomOf="@+id/cityNameTVinDetail" />
+        app:layout_constraintTop_toBottomOf="@+id/cityNameTVinDetail"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/infoTempTVinDetail"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="100dp"
         android:gravity="center"
         android:text="@string/tempTVinDetail"
         android:textColor="@color/white"
         android:textSize="25sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/thirdFragmentRV"
+        app:layout_constraintEnd_toStartOf="@+id/resultTempTVinDetail"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/infoDateTVinDetail" />
 
     <TextView
         android:id="@+id/resultTempTVinDetail"
-        android:layout_width="190dp"
-        android:layout_height="90dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="100dp"
+        android:gravity="center"
         android:textColor="#4E78E1"
         android:textSize="60sp"
         android:textStyle="bold"
-        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/thirdFragmentRV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/infoTempTVinDetail"
+        app:layout_constraintTop_toBottomOf="@+id/resultDateTVinDetail" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/thirdFragmentRV"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingStart="5dp"
+        android:foregroundGravity="center"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/resultWeatherBTNinDetail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/infoTempTVinDetail" />
+        app:layout_constraintTop_toBottomOf="@+id/resultTempTVinDetail" />
 
     <Button
         android:id="@+id/resultWeatherBTNinDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="84dp"
         android:backgroundTint="#039BE5"
         android:text="@string/searchWeatherBTN"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resultTempTVinDetail" />
+        app:layout_constraintTop_toBottomOf="@+id/thirdFragmentRV" />
 
     <Button
         android:id="@+id/saveResultBTNinDetail"
@@ -104,7 +127,9 @@
         android:text="@string/saveBTNinDetail"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resultWeatherBTNinDetail" />
+        app:layout_constraintTop_toBottomOf="@+id/resultWeatherBTNinDetail"
+        app:layout_constraintVertical_bias="0.357" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

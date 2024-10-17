@@ -12,14 +12,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.weatherforecast.R
 import com.bignerdranch.android.weatherforecast.data.database.BaseCity
 import com.bignerdranch.android.weatherforecast.databinding.FragmentSecondBinding
-import com.bignerdranch.android.weatherforecast.ui.recyclerView.RecyclerViewAdapter
+import com.bignerdranch.android.weatherforecast.ui.recyclerView.RecyclerViewAdapterListCityFragment
 import com.bignerdranch.android.weatherforecast.ui.viewModel.ListCityFragmentViewModel
 
-class ListCityFragment : Fragment(), RecyclerViewAdapter.InfoItemClickListener {
+class ListCityFragment : Fragment(), RecyclerViewAdapterListCityFragment.InfoItemClickListener {
 
     private lateinit var listCityFragmentViewModel: ListCityFragmentViewModel
     private lateinit var binding: FragmentSecondBinding
-    private lateinit var adapter: RecyclerViewAdapter
+    private lateinit var adapter: RecyclerViewAdapterListCityFragment
     private lateinit var recycler: RecyclerView
     private val bundle = Bundle()
 
@@ -33,7 +33,7 @@ class ListCityFragment : Fragment(), RecyclerViewAdapter.InfoItemClickListener {
         recycler = binding.recyclerView
         recycler.layoutManager = LinearLayoutManager(context)
 
-        adapter = RecyclerViewAdapter(emptyList())
+        adapter = RecyclerViewAdapterListCityFragment(emptyList())
         recycler.adapter = adapter
 
         adapter.setInfoListener(this)

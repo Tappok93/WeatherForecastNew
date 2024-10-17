@@ -3,7 +3,7 @@ package com.bignerdranch.android.weatherforecast.data.network
 
 data class WeatherResponse(
     val location: Location,
-    val current: Current,
+    val current: Current
 )
 
 data class Location(

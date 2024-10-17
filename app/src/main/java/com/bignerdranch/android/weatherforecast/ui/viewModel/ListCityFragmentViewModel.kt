@@ -14,7 +14,7 @@ class ListCityFragmentViewModel : ViewModel() {
 
     @SuppressLint("StaticFieldLeak")
     val context = MyApplication.getAppContext()
-    private val repositoryDatabase = DatabaseRepositoryImpl(context)
+    private val repositoryDatabase = DatabaseRepositoryImpl()
     private val deleteInfoFromDatabaseUseCase = DeleteInfoFromDatabaseUseCase(repositoryDatabase)
     private val getInfoDatabaseUseCase = GetInfoDatabaseUseCase(repositoryDatabase)
 

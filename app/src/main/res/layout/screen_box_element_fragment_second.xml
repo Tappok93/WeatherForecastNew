@@ -1,4 +1,5 @@
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -17,11 +18,12 @@
 
         <TextView
             android:id="@+id/cityTV"
-            android:layout_width="42dp"
+            android:layout_width="50dp"
             android:layout_height="40dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:gravity="center_vertical"
+            android:paddingStart="2dp"
             android:text="@string/cityText"
             android:textColor="@color/black"
             android:textSize="16sp"
@@ -33,16 +35,19 @@
 
         <TextView
             android:id="@+id/dataTV"
-            android:layout_width="42dp"
+            android:layout_width="50dp"
             android:layout_height="40dp"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:gravity="center_vertical"
+            android:paddingStart="2dp"
             android:text="@string/dataText"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/resultDataTV"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cityTV" />
 
         <TextView
             android:id="@+id/tempTV"
@@ -55,6 +60,7 @@
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/resultTempTV"
             app:layout_constraintStart_toEndOf="@+id/resultDataTV" />
 
         <TextView
@@ -95,7 +101,7 @@
             android:id="@+id/resultTempTV"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginEnd="60dp"
+            android:layout_marginEnd="30dp"
             android:layout_marginBottom="8dp"
             android:background="#23749F"
             android:gravity="center"

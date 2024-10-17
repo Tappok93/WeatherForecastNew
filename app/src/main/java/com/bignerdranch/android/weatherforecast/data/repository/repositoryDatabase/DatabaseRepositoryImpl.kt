@@ -1,6 +1,5 @@
 package com.bignerdranch.android.weatherforecast.data.repository.repositoryDatabase
 
-import android.content.Context
 import androidx.lifecycle.LiveData
 import com.bignerdranch.android.weatherforecast.data.database.BaseCity
 import com.bignerdranch.android.weatherforecast.data.database.BaseCityDao
@@ -9,7 +8,7 @@ import com.bignerdranch.android.weatherforecast.domain.interfaceDatabaseRepositi
 import com.bignerdranch.android.weatherforecast.ui.screens.MyApplication
 
 
-open class DatabaseRepositoryImpl(context: Context) : DatabaseRepository {
+open class DatabaseRepositoryImpl() : DatabaseRepository {
     private val baseCityDao: BaseCityDao
     val context = MyApplication.getAppContext()
 
@@ -19,7 +18,7 @@ open class DatabaseRepositoryImpl(context: Context) : DatabaseRepository {
     }
 
     /**
-     * Реализация интерфеса по вставке или обновлении данных в Database
+     * Реализация интерфейса по вставке или обновлении данных в Database
      */
     override fun insertOrUpdateInfoDatabase(city: BaseCity) {
 
@@ -33,14 +32,14 @@ open class DatabaseRepositoryImpl(context: Context) : DatabaseRepository {
     }
 
     /**
-     * Реализация интерфеса по получению списка объектов из Database
+     * Реализация интерфейса по получению списка объектов из Database
      */
     override fun getInfoFromDatabase(): LiveData<List<BaseCity>> {
         return baseCityDao.getInfoCity()
     }
 
     /**
-     * Реализация интерфеса по удалению объекта из Database
+     * Реализация интерфейса по удалению объекта из Database
      */
     override fun deleteInfoFromDatabase(name: String) {
         Thread {

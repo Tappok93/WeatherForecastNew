@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.bignerdranch.android.weatherforecast.R
+import com.bignerdranch.android.weatherforecast.data.repository.repositoryNetwork.NetworkUtils
 import com.bignerdranch.android.weatherforecast.databinding.FragmentFirstBinding
 import com.bignerdranch.android.weatherforecast.ui.viewModel.MainFragmentViewModel
 import com.bumptech.glide.Glide
@@ -28,38 +29,69 @@ class FirstFragment : Fragment() {
         binding = FragmentFirstBinding.inflate(layoutInflater, container, false)
         mainFragmentViewModel = ViewModelProvider(this)[MainFragmentViewModel::class.java]
 
-        binding.resultWheatherBTN.setOnClickListener {
-            mainFragmentViewModel.hideKeyboardFrom(requireContext(), binding.cityEDT)
-            mainFragmentViewModel.getWeather(binding.cityEDT.text.toString())
+        if (mainFragmentViewModel.internetAccess(requireContext())) {
+            // Интернет доступен
 
-            mainFragmentViewModel.resultResponse.observe(
-                viewLifecycleOwner
-            ) { weatherData ->
-                if (weatherData == null) {
-                    Toast.makeText(context, "Не указан город.", Toast.LENGTH_SHORT).show()
-                } else {
-                    binding.weatherTV.text = weatherData.current.condition.text
-                    binding.resultTempFF.text = weatherData.current.temp_c
+            /**
+             * Нажатие кнопки [Узнать погоду]
+             */
+            binding.resultWheatherBTN.setOnClickListener {
+                mainFragmentViewModel.hideKeyboardFrom(requireContext(), binding.cityEDT)
+                mainFragmentViewModel.getWeather(binding.cityEDT.text.toString())
 
-                    Glide.with(this)
-                        .load("https:" + weatherData.current.condition.icon)
-                        .into(binding.weatherIV)
+                mainFragmentViewModel.resultResponse.observe(
+                    viewLifecycleOwner
+                ) { weatherData ->
+                    if (weatherData == null) {
+                        Toast.makeText(context, "Не указан город.", Toast.LENGTH_SHORT).show()
+                    } else {
+                        binding.weatherTV.text = weatherData.current.condition.text
+                        binding.resultTempFF.text = weatherData.current.temp_c
 
-                    binding.weatherIV.visibility = VISIBLE
+                        Glide.with(this)
+                            .load("https:" + weatherData.current.condition.icon)
+                            .into(binding.weatherIV)
+
+                        binding.weatherIV.visibility = VISIBLE
+                        binding.cityEDT.text.clear()
+                    }
                 }
             }
-        }
 
-        binding.saveCityBTN.setOnClickListener {
-            mainFragmentViewModel.createCityInfoInObject()
-            mainFragmentViewModel.saveCityInfoInUi()
-            Toast.makeText(context, "Город сохранён в список", Toast.LENGTH_SHORT).show()
-        }
+            /**
+             * Нажатие кнопки [Сохранить погоду]
+             */
+            binding.saveCityBTN.setOnClickListener {
+                mainFragmentViewModel.createCityInfoInObject()
+                mainFragmentViewModel.saveCityInfoInUi()
+                Toast.makeText(context, "Город сохранён в список", Toast.LENGTH_SHORT).show()
+            }
 
-        binding.myCityBTN.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_firstFragment_to_secondFragment)
-        }
+            /**
+             * Нажатие кнопки [Мои города]
+             */
+            binding.myCityBTN.setOnClickListener {
+                Navigation.findNavController(it)
+                    .navigate(R.id.action_firstFragment_to_secondFragment)
+            }
+        } else {
+            // Интернет недоступен
 
+            /**
+             * Обработка нажатий кнопок [Узнать погоду], [Сохранить погоду], [Мои города].
+             */
+            binding.resultWheatherBTN.setOnClickListener {
+                Toast.makeText(requireContext(), "Интернет недоступен", Toast.LENGTH_LONG).show()
+            }
+            binding.saveCityBTN.setOnClickListener {
+                Toast.makeText(requireContext(), "Интернет недоступен", Toast.LENGTH_LONG).show()
+            }
+            binding.myCityBTN.setOnClickListener {
+                Navigation.findNavController(it)
+                    .navigate(R.id.action_firstFragment_to_secondFragment)
+            }
+
+        }
         return binding.root
     }
 }

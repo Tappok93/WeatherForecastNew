@@ -7,27 +7,19 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class RetrofitWeather(private val weatherApi: WeatherApi) {
+class RetrofitWeather {
 
-    fun weatherResultResponse(city: String): LiveData<WeatherResponse> {
-        val responseLiveData: MutableLiveData<WeatherResponse> = MutableLiveData()
-        val weatherRequest: Call<WeatherResponse> = weatherApi.getWeather(city, "no")
+     fun <T, V> getDataFromServer(input: T, request: (T) -> Call<V>): LiveData<V> {
+        val responseLiveData: MutableLiveData<V> = MutableLiveData()
 
-        /**
-         * Создание запроса на сайт и обработка ответа
-         */
-        weatherRequest.enqueue(object : Callback<WeatherResponse> {
-
-            override fun onFailure(call: Call<WeatherResponse>, t: Throwable) {
+        request(input).enqueue(object : Callback<V> {
+            override fun onFailure(call: Call<V>, t: Throwable) {
                 Log.e("MyLog", "Response fail", t)
             }
 
-            override fun onResponse(
-                call: Call<WeatherResponse>,
-                response: Response<WeatherResponse>,
-            ) {
-                val weatherResponseApi: WeatherResponse? = response.body()
-                responseLiveData.value = weatherResponseApi
+            override fun onResponse(call: Call<V>, response: Response<V>) {
+                val responseBody: V? = response.body()
+                responseLiveData.value = responseBody
             }
         })
 

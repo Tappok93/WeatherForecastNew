@@ -7,7 +7,7 @@ import com.bignerdranch.android.weatherforecast.data.repository.repositoryNetwor
 class GetWeatherResultApiUseCase() {
 
     fun getWeatherResultAPI(city: String): LiveData<WeatherResponse> {
-        return NetworkRepository.getWeatherResultAPI(city)
+        return NetworkRepository.getWeatherWithCountry(city)
     }
 
 }

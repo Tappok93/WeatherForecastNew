@@ -7,11 +7,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.weatherforecast.R
 import com.bignerdranch.android.weatherforecast.data.database.BaseCity
-import com.bignerdranch.android.weatherforecast.databinding.ScreenBoxElementBinding
+import com.bignerdranch.android.weatherforecast.databinding.ScreenBoxElementFragmentSecondBinding
 
-class RecyclerViewAdapter(private var myListArray: List<BaseCity>) :
-    RecyclerView.Adapter<RecyclerViewAdapter.ItemViewHolder>() {
-
+class RecyclerViewAdapterListCityFragment(private var myListArray: List<BaseCity>) :
+    RecyclerView.Adapter<RecyclerViewAdapterListCityFragment.ItemViewHolder>() {
 
     private var infoListener: InfoItemClickListener? = null
 
@@ -28,7 +27,7 @@ class RecyclerViewAdapter(private var myListArray: List<BaseCity>) :
     }
 
     class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val bindingAdapter = ScreenBoxElementBinding.bind(itemView)
+        private val bindingAdapter = ScreenBoxElementFragmentSecondBinding.bind(itemView)
 
         /**
          * Заполнение шаблона данными, передача данных на следующий фрагмент, удаление элемента списка
@@ -53,7 +52,7 @@ class RecyclerViewAdapter(private var myListArray: List<BaseCity>) :
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-            .inflate(R.layout.screen_box_element, parent, false)
+            .inflate(R.layout.screen_box_element_fragment_second, parent, false)
         return ItemViewHolder(inflater)
     }
 
