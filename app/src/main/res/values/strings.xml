@@ -21,4 +21,5 @@
     <string name="Delete">Del</string>
     <string name="weather">TextView</string>
     <string name="infoButtonText">Info</string>
+    <string name="setting_menu">Настройка</string>
 </resources>
